@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ichatapp</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script defer>
+          const socket=io();
+          const audio=new Audio('chat_audio.mp3')
+          let msgappend=(massage,position)=>{
+                 let container=document.getElementById("container");
+                 let msg=document.createElement('div');
+                 msg.innerText=massage;
+                 msg.classList.add('massage');
+                 msg.classList.add(position);
+                 container.append(msg);
+                 if(position==='left'){
+                  audio.play();
+                 }
+                 //console.log(msg);
+          }
+          const user=prompt("Enter your username");
+          socket.emit('username',user);
+          socket.on("userjoined",data=>{
+              console.log(data);
+              msgappend(`    ${data} joined chat     `,'middle')
+          });
+        function func() {
+              // e.preventDefault();
+              const msginput=document.getElementById('inputtext');
+              let wmsg=msginput.value;
+              msgappend(`you: ${wmsg}`,'right');
+              socket.emit('sendmsg',wmsg);
+              msginput.value="";
+          }
+          socket.on('receive',(data)=>{
+              msgappend(`${data.name}: ${data.massage}`,'left');
+          })
+          socket.on('loseconnection',(name)=>{
+            msgappend(`${name} disconnect`,'middle');
+          })
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div class="logo">
+      <img src="talkup.webp" type="image" alt="" />
+    </div>
+    <div class="content"><h2>welcome to i chat app</h2></div>
+    <div class="container" id="container">
+    </div>
+    <div class="search">
+        <input type="text"id ="inputtext" name="input" />
+        <button type="submit"onclick="func()" class="btn">Hit</button>
+    </div>
+  </body>
+</html>

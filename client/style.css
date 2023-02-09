@@ -1,0 +1,92 @@
+body{
+    background-image: linear-gradient(45deg, #2f2fa8, transparent);
+}
+.logo{
+    margin: auto;
+    width: 60px;
+}
+.logo img{
+    width: 60px;
+    border-radius: 12px;
+}
+.container{
+    margin: auto;
+    width: 50%;
+    height: 80vh;
+    border: 2px solid black;
+    border-radius: 12px;
+    overflow-y: auto;
+}
+.right{
+    float: right;
+    clear: both;
+    width: 29%;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 14px;
+    background-color: #23235a;
+    color: white;
+    padding-left: 12px;
+}
+.left{
+    float: left;
+    clear: both;
+    width: 29%;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 14px;
+    background-color: #23235a;
+    color: white;
+    padding-left: 12px;
+}
+.search{
+    margin: auto;
+    width: 50%;
+}
+form{
+    text-align: center;
+}
+input{
+    width: 87%;
+    height: 24px;
+    border-radius: 6px;
+}
+.btn{
+    height: 26px;
+    width: 51px;
+    font-weight: bolder;
+    color: white;
+    background-color: #0c219d;
+    border-radius: 5px;
+}
+.middle{
+    width: 50%;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: auto;
+    background-color: #23235a;
+    color: white;
+    padding-left: 12px;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    clear: both;
+}
+.content{
+    display: flex;
+    justify-content: center;
+}
+.content h2{
+    color: #20207f;
+    margin: 3px;
+}
+@media screen and (max-width: 480px) {
+    .container{
+        width: 83%;
+        height: 79vh;
+    }
+    .search{
+        width: 81%;
+        display: flex;
+    }
+  }
+  
